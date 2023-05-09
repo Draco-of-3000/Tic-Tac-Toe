@@ -8,6 +8,14 @@ class TicTacToe
         @current_player = "X"
     end
 
+    def get_player_names
+        puts "Welcome to Tic Tac Toe!"
+        print "Player 1, please enter your name: "
+        @player1_name = gets.chomp
+        print "Player 2, please enter your name: "
+        @player2_name = gets.chomp
+    end
+
     def display_board
         puts "   0  1  2"
         puts " ------------"
