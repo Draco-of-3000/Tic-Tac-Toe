@@ -129,7 +129,7 @@ class TicTacToe
     end
     
     def board_full?
-        @board.flatten.none?(&:empty?)
+        @board.flatten.none? { |space| space == ' ' }
     end
 end
 
