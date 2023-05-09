@@ -62,7 +62,7 @@ class TicTacToe
         switch_players
     end
 
-    def switch_players(current_player)
+    def switch_players
         @current_player = @current_player == "X" ? "O" : "X"
     end
 
