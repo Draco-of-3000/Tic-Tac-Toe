@@ -5,7 +5,9 @@ class TicTacToe
             [" ", " ", " "],
             [" ", " ", " "]
         ]
-        @current_player = "X"
+        @player1_name = ""
+        @player2_name = ""
+        @current_player = ""
     end
 
     def get_player_names
