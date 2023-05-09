@@ -19,6 +19,15 @@ class TicTacToe
             puts "\n ------------"
         end
     end
+
+    def update_board(row, col, current_player)
+        if @board[row][col].empty?
+            @board[row][col] = current_player
+            return true
+        else
+            return false
+        end
+    end
 end
 
 board = TicTacToe.new
