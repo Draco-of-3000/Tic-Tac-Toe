@@ -5,6 +5,7 @@ class TicTacToe
             [" ", " ", " "],
             [" ", " ", " "]
         ]
+        @current_player = "X"
     end
 
     def display_board
