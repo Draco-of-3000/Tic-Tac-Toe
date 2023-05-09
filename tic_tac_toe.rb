@@ -16,6 +16,7 @@ class TicTacToe
         @player1_name = gets.chomp
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
+        @current_player = [@player1_name, @player2_name].sample
     end
 
     def display_board
