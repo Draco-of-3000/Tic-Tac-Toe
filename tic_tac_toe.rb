@@ -17,6 +17,7 @@ class TicTacToe
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
         @current_player = [@player1_name, @player2_name].sample
+         make_move(@current_player)
     end
 
     def display_board
@@ -42,22 +43,21 @@ class TicTacToe
 
     def make_move(current_player)
         valid_move = false 
-
+    
         until valid_move
-            puts "Player #{current_player}, enter your move (row, col):"
-            move = gets.chomp.split(",")
-            row, col = move[0].to_i, move[1].to_i
-
-            if (0..2).include?(row) && (0..2).include?(col)
-                if @board[row][col].empty?
-                    @board[row][col] = current_player
-                    valid_move = true
-                else
-                    puts "That space is already occupied. Try again."
-                end
-            else 
-                puts "Invalid row or column. Try again."
+          puts "Player #{current_player}, enter your move (row, col):"
+          move = gets.chomp.split(",")
+          row, col = move[0].to_i, move[1].to_i
+    
+          if (0..2).include?(row) && (0..2).include?(col)
+            if update_board(row, col, current_player)
+              valid_move = true
+            else
+              puts "That space is already occupied. Try again."
             end
+          else 
+            puts "Invalid row or column. Try again."
+          end
         end
         switch_players
     end
