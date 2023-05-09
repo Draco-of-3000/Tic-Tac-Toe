@@ -28,6 +28,27 @@ class TicTacToe
             return false
         end
     end
+
+    def make_move(current_player)
+        valid_move = false 
+
+        until valid_move
+            puts "Player #{current_player}, enter your move (row, col):"
+            move = gets.chomp.split(",")
+            row, col = move[0].to_i, move[1].to_i
+
+            if (0..2)include?(row) && (0..2).include?(col)
+                if @board[row][col].empty?
+                    @board[row][col] = current_player
+                    valid_move = true
+                else
+                    puts "That space is already occupied. Try again."
+                end
+            else 
+                puts "Invalid row or column. Try again."
+            end
+        end
+    end
 end
 
 board = TicTacToe.new
