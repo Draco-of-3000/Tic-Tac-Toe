@@ -45,13 +45,14 @@ class TicTacToe
           move = gets.chomp.split(",")
           row, col = move[0].to_i, move[1].to_i
     
-          if (0..2).include?(row) && (0..2).include?(col)
-            if update_board(row, col, current_player)
-              valid_move = true
+          if row.between?(0, 2) && col.between?(0, 2)
+            if @board[row][col] == ' '
+                update_board(row, col, current_player)
+                valid_move = true
             else
-              puts "That space is already occupied. Try again."
+                puts "That space is already occupied. Try again."
             end
-          else 
+          else
             puts "Invalid row or column. Try again."
           end
         end
