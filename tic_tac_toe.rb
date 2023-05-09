@@ -49,6 +49,10 @@ class TicTacToe
             end
         end
     end
+
+    def switch_players(current_player)
+        current_player == "X" ? "O" : "X"
+    end
 end
 
 board = TicTacToe.new
