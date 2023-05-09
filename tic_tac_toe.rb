@@ -23,8 +23,8 @@ class TicTacToe
     def display_board
         puts "   0  1  2"
         puts " ------------"
-        @board.each_with_index do |row, i|
-            print "#{i} |"
+        @board.each_with_index do |row, index|
+            print "#{index} |"
             row.each do |space|
                 print "#{space} |"
             end
