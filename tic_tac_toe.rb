@@ -1,10 +1,6 @@
 class TicTacToe 
     def initialize
-        @board = [
-            [" ", " ", " "],
-            [" ", " ", " "],
-            [" ", " ", " "]
-        ]
+        @board = Array.new(3) { Array.new(3) { " " } }
         @player1_name = ""
         @player2_name = ""
         @current_player = ""
