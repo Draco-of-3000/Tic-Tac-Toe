@@ -48,7 +48,7 @@ class TicTacToe
             move = gets.chomp.split(",")
             row, col = move[0].to_i, move[1].to_i
 
-            if (0..2)include?(row) && (0..2).include?(col)
+            if (0..2).include?(row) && (0..2).include?(col)
                 if @board[row][col].empty?
                     @board[row][col] = current_player
                     valid_move = true
@@ -63,7 +63,7 @@ class TicTacToe
     end
 
     def switch_players(current_player)
-        current_player == "X" ? "O" : "X"
+        @current_player = @current_player == "X" ? "O" : "X"
     end
 
     def check_winner
@@ -80,7 +80,7 @@ class TicTacToe
     
         # Check columns
         @board.transpose.each do |col|
-            if col.uniq.size == 1 !col.include?(" ")
+            if col.uniq.size == 1 && !col.include?(" ")
                 if col[0] == "X"
                     return player1_name
                 else
@@ -134,3 +134,5 @@ class TicTacToe
 end
 
 
+newGame = TicTacToe.new 
+newGame.play_game
