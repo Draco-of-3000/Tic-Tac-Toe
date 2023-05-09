@@ -83,6 +83,5 @@ class TicTacToe
 
 end
 
-board = TicTacToe.new
-puts board.display_board
+
 
