@@ -33,7 +33,7 @@ class TicTacToe
     end
 
     def update_board(row, col, current_player)
-        if @board[row][col].empty?
+        if @board[row][col] == " "
             @board[row][col] = current_player
             return true
         else
