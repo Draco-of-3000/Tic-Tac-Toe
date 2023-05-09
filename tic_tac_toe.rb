@@ -44,6 +44,7 @@ class TicTacToe
                 else
                     puts "That space is already occupied. Try again."
                 end
+                switch_players
             else 
                 puts "Invalid row or column. Try again."
             end
