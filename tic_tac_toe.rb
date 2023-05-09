@@ -71,9 +71,9 @@ class TicTacToe
         @board.each do |row|
             if row.uniq.size == 1 && !row.include?(" ")
                 if row[0] == "X"
-                    return player1_name
+                    return @player1_name
                 else 
-                    return player2_name
+                    return @player2_name
                 end
             end
         end
@@ -82,9 +82,9 @@ class TicTacToe
         @board.transpose.each do |col|
             if col.uniq.size == 1 && !col.include?(" ")
                 if col[0] == "X"
-                    return player1_name
+                    return @player1_name
                 else
-                    return player2_name
+                    return @player2_name
                 end
             end
         end
@@ -92,16 +92,16 @@ class TicTacToe
         # Check diagonals
         if [@board[0][0], @board[1][1], @board[2][2]].uniq.size == 1 && ![@board[0][0], @board[1][1], @board[2][2]].include?(" ")
             if @board[0][0] == "X"
-                return player1_name
+                return @player1_name
             else
-                return player2_name
+                return @player2_name
             end
 
         elsif [@board[0][2], @board[1][1], @board[2][0]].uniq.size == 1 && ![@board[0][2], @board[1][1], @board[2][0]].include?(" ")
             if @board[0][2] == "X"
-                return player1_name
+                return @player1_name
             else
-                return player2_name
+                return @player2_name
             end
         end
     
