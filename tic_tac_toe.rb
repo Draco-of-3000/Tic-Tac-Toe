@@ -16,6 +16,7 @@ class TicTacToe
         puts "\n"
         puts "Okay #{player_one.name}, you're up. Make a move."
         display_board
+        make_move
     end
 
     def display_board
