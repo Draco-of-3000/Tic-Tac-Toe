@@ -1,7 +1,5 @@
 class TicTacToe 
-    def initialize
-        @board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    end
+    @board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     @@count = 0
 
     def get_player_names
