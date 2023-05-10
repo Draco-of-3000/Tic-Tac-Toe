@@ -47,7 +47,10 @@ class TicTacToe
             @@board[move] = player_one.symbol
             @@count += 1
             display_board
-            return if check_winner(player_one)
+            if check_winner(player_one)
+                puts "#{player_one.name} wins!"
+                return
+            end
 
             switch_players(@current_player)
 
@@ -57,8 +60,10 @@ class TicTacToe
             @@board[move] = player_two.symbol
             @@count += 1
             display_board
-            return if check_winner(player_two)
-
+            if check_winner(player_two)
+                puts "#{player_two.name} wins!"
+                return
+            end
             switch_players(@current_player)
         end
     end
