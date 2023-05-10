@@ -42,14 +42,14 @@ class TicTacToe
 
             puts "Pick a number from the grid above #{player_one.name}"
             move = gets.chomp.to_i - 1
-            check_square(move, player_one, player_two)
+            update_board(move, player_one, player_two)
             @@board[move] = player_one.symbol
             @@count += 1
             display_board
 
             puts "Pick a number from the grid above #{player_two.name}"
             move = gets.chomp.to_i - 1
-            check_square(move, player_one, player_two)
+            update_board(move, player_one, player_two)
             @@board[move] = player_two.symbol
             @@count += 1
             display_board
