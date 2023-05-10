@@ -9,7 +9,14 @@ class TicTacToe
         @player1_name = gets.chomp
         puts "Would you like to be X or O #{@player1_name}?"
         symbol1 = gets.chomp.upcase
+
+        until symbol1 == "X" || symbol1 == "O"
+            puts "Invalid symbol. Please enter 'X' or 'O':"
+            symbol1 = gets.chomp.upcase
+        end
+
         player_one = Players.new(@player1_name, symbol1)
+        
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
         symbol2 = player_one.symbol == "X" ? "O" : "X"
