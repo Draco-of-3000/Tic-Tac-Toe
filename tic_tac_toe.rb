@@ -47,6 +47,7 @@ class TicTacToe
             @@board[move] = player_one.symbol
             @@count += 1
             display_board
+            switch_players(@current_player)
 
             puts "Pick a number from the grid above #{player_two.name}"
             move = gets.chomp.to_i - 1
@@ -54,6 +55,7 @@ class TicTacToe
             @@board[move] = player_two.symbol
             @@count += 1
             display_board
+            switch_players(@current_player)
         end
     end
 
