@@ -63,47 +63,20 @@ class TicTacToe
         @current_player = @current_player == "X" ? "O" : "X"
     end
 
-    def check_winner
-        # Check rows
-        @board.each do |row|
-            if row.uniq.size == 1 && !row.include?(" ")
-                if row[0] == "X"
-                    return @player1_name
-                else 
-                    return @player2_name
-                end
+    def check_winner(player)
+        winning_combinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # columns
+            [0, 4, 8], [2, 4, 6]              # diagonals
+        ]
+        
+        winning_combinations.each do |combination|
+            if combination.all? { |index| @@board[index] == player.symbol }
+              return true
             end
         end
-    
-        # Check columns
-        @board.transpose.each do |col|
-            if col.uniq.size == 1 && !col.include?(" ")
-                if col[0] == "X"
-                    return @player1_name
-                else
-                    return @player2_name
-                end
-            end
-        end
-    
-        # Check diagonals
-        if [@board[0][0], @board[1][1], @board[2][2]].uniq.size == 1 && ![@board[0][0], @board[1][1], @board[2][2]].include?(" ")
-            if @board[0][0] == "X"
-                return @player1_name
-            else
-                return @player2_name
-            end
-
-        elsif [@board[0][2], @board[1][1], @board[2][0]].uniq.size == 1 && ![@board[0][2], @board[1][1], @board[2][0]].include?(" ")
-            if @board[0][2] == "X"
-                return @player1_name
-            else
-                return @player2_name
-            end
-        end
-    
-        # If there is no winner yet, return nil
-        return nil
+        
+        false
     end
 
     def play_game 
