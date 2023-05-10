@@ -1,6 +1,10 @@
 class TicTacToe 
     def initialize
-        @board = Array.new(3) { Array.new(3) { " " } }
+        @board = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ]
         @player1_name = ""
         @player2_name = ""
         @current_player = ""
@@ -13,14 +17,13 @@ class TicTacToe
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
         @current_player = [@player1_name, @player2_name].sample
-         make_move(@current_player)
     end
 
     def display_board
         puts "   0  1  2"
         puts " ------------"
-        @board.each_with_index do |row, index|
-            print "#{index} |"
+        @board.each_with_index do |row, i|
+            print "#{i} |"
             row.each do |space|
                 print "#{space} |"
             end
@@ -29,7 +32,7 @@ class TicTacToe
     end
 
     def update_board(row, col, current_player)
-        if @board[row][col] == " "
+        if @board[row][col].empty?
             @board[row][col] = current_player
             return true
         else
@@ -39,27 +42,27 @@ class TicTacToe
 
     def make_move(current_player)
         valid_move = false 
-    
+
         until valid_move
-          puts "Player #{current_player}, enter your move (row, col):"
-          move = gets.chomp.split(",")
-          row, col = move[0].to_i, move[1].to_i
-    
-          if row.between?(0, 2) && col.between?(0, 2)
-            if @board[row][col] == ' '
-                update_board(row, col, current_player)
-                valid_move = true
-            else
-                puts "That space is already occupied. Try again."
+            puts "Player #{current_player}, enter your move (row, col):"
+            move = gets.chomp.split(",")
+            row, col = move[0].to_i, move[1].to_i
+
+            if (0..2).include?(row) && (0..2).include?(col)
+                if @board[row][col].empty?
+                    @board[row][col] = current_player
+                    valid_move = true
+                else
+                    puts "That space is already occupied. Try again."
+                end
+            else 
+                puts "Invalid row or column. Try again."
             end
-          else
-            puts "Invalid row or column. Try again."
-          end
         end
         switch_players
     end
 
-    def switch_players
+    def switch_players(current_player)
         @current_player = @current_player == "X" ? "O" : "X"
     end
 
@@ -126,7 +129,7 @@ class TicTacToe
     end
     
     def board_full?
-        @board.flatten.none? { |space| space == ' ' }
+        @board.flatten.none?(&:empty?)
     end
 end
 
