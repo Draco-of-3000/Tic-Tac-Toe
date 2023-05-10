@@ -2,6 +2,7 @@ class TicTacToe
     def initialize
         @board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     end
+    @@count = 0
 
     def get_player_names
         puts "Welcome to Tic Tac Toe!"
