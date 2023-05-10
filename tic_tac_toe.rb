@@ -27,12 +27,12 @@ class TicTacToe
         puts "\n"
     end
 
-    def update_board(row, col, current_player)
-        if @board[row][col].empty?
-            @board[row][col] = current_player
-            return true
+    def update_board(move, player_one, player_two)
+        if @@board[move] == player_one.symbol || @@board[move] == player_two.symbol
+            puts "That number is taken, pick another!"
+            move = gets.chomp.to_i - 1
         else
-            return false
+            return
         end
     end
 
