@@ -14,9 +14,16 @@ class TicTacToe
         puts "Welcome to Tic Tac Toe!"
         print "Player 1, please enter your name: "
         @player1_name = gets.chomp
+        puts "Would you like to be X or O #{@player1_name}?"
+        symbol1 = gets.chomp.upcase
+        player_one = Players.new(player1, symbol1)
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
-        @current_player = [@player1_name, @player2_name].sample
+        symbol2 = player_one.symbol == "X" ? "O" : "X"
+        player_two = Players.new(player2, symbol2)
+        puts "\n"
+        puts "Okay #{player_one.name}, you're up. Make a move."
+        display_board
     end
 
     def display_board
