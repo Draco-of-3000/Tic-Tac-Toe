@@ -21,15 +21,12 @@ class TicTacToe
     end
 
     def display_board
-        puts "   0  1  2"
-        puts " ------------"
-        @board.each_with_index do |row, i|
-            print "#{i} |"
-            row.each do |space|
-                print "#{space} |"
-            end
-            puts "\n ------------"
-        end
+        puts "  #{@@board[0]}  |  #{@@board[1]}  |  #{@@board[2]}"
+        puts seperator = "-----+-----+-----"
+        puts "  #{@@board[3]}  |  #{@@board[4]}  |  #{@@board[5]}"
+        puts seperator
+        puts "  #{@@board[6]}  |  #{@@board[7]}  |  #{@@board[8]}"
+        puts "\n"
     end
 
     def update_board(row, col, current_player)
