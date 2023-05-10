@@ -16,7 +16,7 @@ class TicTacToe
         end
 
         player_one = Players.new(@player1_name, symbol1)
-        
+
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
         symbol2 = player_one.symbol == "X" ? "O" : "X"
@@ -50,6 +50,12 @@ class TicTacToe
 
             puts "Pick a number from the grid above #{player_one.name}"
             move = gets.chomp.to_i - 1
+
+            if move < 0 || move >= 9
+                puts "Invalid input. Please enter a number between 1 and 9."
+                next
+            end
+
             update_board(move, player_one, player_two)
             @@board[move] = player_one.symbol
             @@count += 1
@@ -63,6 +69,12 @@ class TicTacToe
 
             puts "Pick a number from the grid above #{player_two.name}"
             move = gets.chomp.to_i - 1
+
+            if move < 0 || move >= 9
+                puts "Invalid input. Please enter a number between 1 and 9."
+                next
+            end
+            
             update_board(move, player_one, player_two)
             @@board[move] = player_two.symbol
             @@count += 1
