@@ -87,10 +87,6 @@ class TicTacToe
         
         false
     end
-    
-    def board_full?
-        @board.flatten.none?(&:empty?)
-    end
 end
 
 class Players
