@@ -133,6 +133,14 @@ class TicTacToe
     end
 end
 
+class Players
+    attr_accessor :name, :symbol
+    def initialize (name, symbol)
+        @name = name
+        @symbol = symbol
+    end
+end
+
 
 newGame = TicTacToe.new 
 newGame.play_game
