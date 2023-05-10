@@ -87,25 +87,6 @@ class TicTacToe
         
         false
     end
-
-    def play_game 
-        get_player_names
-        display_board
-
-        winner = nil
-        until winner || board_full?
-            make_move(@current_player)
-            display_board
-            winner = check_winner
-            switch_players
-        end
-
-        if winner
-            puts "#{winner} is the winner!"
-        else
-            puts "It's a tie!"
-        end
-    end
     
     def board_full?
         @board.flatten.none?(&:empty?)
