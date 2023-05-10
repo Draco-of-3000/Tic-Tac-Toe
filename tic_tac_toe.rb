@@ -47,6 +47,8 @@ class TicTacToe
             @@board[move] = player_one.symbol
             @@count += 1
             display_board
+            return if check_winner(player_one)
+
             switch_players(@current_player)
 
             puts "Pick a number from the grid above #{player_two.name}"
@@ -55,6 +57,8 @@ class TicTacToe
             @@board[move] = player_two.symbol
             @@count += 1
             display_board
+            return if check_winner(player_two)
+
             switch_players(@current_player)
         end
     end
