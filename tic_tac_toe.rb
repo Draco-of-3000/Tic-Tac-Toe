@@ -8,11 +8,11 @@ class TicTacToe
         @player1_name = gets.chomp
         puts "Would you like to be X or O #{@player1_name}?"
         symbol1 = gets.chomp.upcase
-        player_one = Players.new(player1, symbol1)
+        player_one = Players.new(player1_name, symbol1)
         print "Player 2, please enter your name: "
         @player2_name = gets.chomp
         symbol2 = player_one.symbol == "X" ? "O" : "X"
-        player_two = Players.new(player2, symbol2)
+        player_two = Players.new(player2_name, symbol2)
         puts "\n"
         puts "Okay #{player_one.name}, you're up. Make a move."
         display_board
@@ -137,4 +137,4 @@ end
 
 
 newGame = TicTacToe.new 
-newGame.make_move
+newGame.get_player_names
