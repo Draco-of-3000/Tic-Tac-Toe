@@ -36,7 +36,7 @@ class TicTacToe
         end
     end
 
-    def make_move(current_player)
+    def make_move(player_one, player_two)
         until @@count == 9
 
             puts "Pick a number from the grid above #{player_one.name}"
@@ -136,4 +136,4 @@ end
 
 
 newGame = TicTacToe.new 
-newGame.play_game
+newGame.make_move
