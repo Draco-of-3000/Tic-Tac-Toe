@@ -37,25 +37,22 @@ class TicTacToe
     end
 
     def make_move(current_player)
-        valid_move = false 
+        until @@count == 9
 
-        until valid_move
-            puts "Player #{current_player}, enter your move (row, col):"
-            move = gets.chomp.split(",")
-            row, col = move[0].to_i, move[1].to_i
+            puts "Pick a number from the grid above #{player_one.name}"
+            move = gets.chomp.to_i - 1
+            check_square(move, player_one, player_two)
+            @@board[move] = player_one.symbol
+            @@count += 1
+            display_board
 
-            if (0..2).include?(row) && (0..2).include?(col)
-                if @board[row][col].empty?
-                    @board[row][col] = current_player
-                    valid_move = true
-                else
-                    puts "That space is already occupied. Try again."
-                end
-            else 
-                puts "Invalid row or column. Try again."
-            end
+            puts "Pick a number from the grid above #{player_two.name}"
+            move = gets.chomp.to_i - 1
+            check_square(move, player_one, player_two)
+            @@board[move] = player_two.symbol
+            @@count += 1
+            display_board
         end
-        switch_players
     end
 
     def switch_players(current_player)
