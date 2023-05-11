@@ -46,7 +46,11 @@ class TicTacToe
     end
 
     def make_move(player_one, player_two)
-        until @@count == 9
+        while @@count < 9
+            if @@count == 8
+                puts "It's a tie!"
+                return
+            end
 
             puts "Pick a number from the grid above #{player_one.name}"
             move = gets.chomp.to_i - 1
@@ -74,7 +78,7 @@ class TicTacToe
                 puts "Invalid input. Please enter a number between 1 and 9."
                 next
             end
-            
+
             update_board(move, player_one, player_two)
             @@board[move] = player_two.symbol
             @@count += 1
