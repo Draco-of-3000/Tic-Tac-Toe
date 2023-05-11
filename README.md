@@ -13,7 +13,7 @@ Interactive Gameplay:
 
 **Usage**
 - Clone the repository to your local machine.
-- Navigate to the project directory and run the tic_tac_toe.rb file using Ruby: ruby tic_tac_toe.rb.
+- Navigate to the project directory and run the "tic_tac_toe.rb" file using Ruby: ruby tic_tac_toe.rb.
 - Follow the on-screen prompts to enter player names and make moves on the grid.
 - The game will continue until there is a winner or a tie.
 - Enjoy playing Tic Tac Toe with your friends and have fun!
