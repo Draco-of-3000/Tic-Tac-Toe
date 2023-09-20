@@ -1,7 +1,9 @@
 class TicTacToe 
-    @@board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    @@count = 0
-    @current_player = " "
+    def initialize
+        @board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        @count = 0
+        @current_player = " "
+    end
 
     def get_player_names
         puts "Welcome to Tic Tac Toe!"
@@ -28,16 +30,16 @@ class TicTacToe
     end
 
     def display_board
-        puts "  #{@@board[0]}  |  #{@@board[1]}  |  #{@@board[2]}"
+        puts "  #{@board[0]}  |  #{@board[1]}  |  #{@board[2]}"
         puts seperator = "-----+-----+-----"
-        puts "  #{@@board[3]}  |  #{@@board[4]}  |  #{@@board[5]}"
+        puts "  #{@board[3]}  |  #{@board[4]}  |  #{@board[5]}"
         puts seperator
-        puts "  #{@@board[6]}  |  #{@@board[7]}  |  #{@@board[8]}"
+        puts "  #{@board[6]}  |  #{@board[7]}  |  #{@board[8]}"
         puts "\n"
     end
 
     def update_board(move, player_one, player_two)
-        if @@board[move] == player_one.symbol || @@board[move] == player_two.symbol
+        if @board[move] == player_one.symbol || @board[move] == player_two.symbol
             puts "That number is taken, pick another!"
             move = gets.chomp.to_i - 1
         else
@@ -46,8 +48,8 @@ class TicTacToe
     end
 
     def make_move(player_one, player_two)
-        while @@count < 9
-            if @@count == 8
+        while @count < 9
+            if @count == 8
                 puts "It's a tie!"
                 return
             end
@@ -61,8 +63,8 @@ class TicTacToe
             end
 
             update_board(move, player_one, player_two)
-            @@board[move] = player_one.symbol
-            @@count += 1
+            @board[move] = player_one.symbol
+            @count += 1
             display_board
             if check_winner(player_one)
                 puts "#{player_one.name} wins!"
@@ -80,8 +82,8 @@ class TicTacToe
             end
 
             update_board(move, player_one, player_two)
-            @@board[move] = player_two.symbol
-            @@count += 1
+            @board[move] = player_two.symbol
+            @count += 1
             display_board
             if check_winner(player_two)
                 puts "#{player_two.name} wins!"
@@ -103,7 +105,7 @@ class TicTacToe
         ]
         
         winning_combinations.each do |combination|
-            if combination.all? { |index| @@board[index] == player.symbol }
+            if combination.all? { |index| @board[index] == player.symbol }
               return true
             end
         end
@@ -119,7 +121,6 @@ class Players
         @symbol = symbol
     end
 end
-
 
 newGame = TicTacToe.new 
 newGame.get_player_names
