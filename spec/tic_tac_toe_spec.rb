@@ -145,4 +145,33 @@ describe TicTacToe do
             end
         end
     end
+
+    describe '#make_move' do
+        subject(:game) { described_class.new }
+
+        before do
+            allow(game).to receive(:gets).and_return("Player1", "X", "Player2", "O")
+        end
+
+        context 'when the game ends in a tie' do
+            before do
+                game.instance_variable_set(:@board, ["X", "O", "X", "X", "X", "O", "O", "X", "O"])
+                game.instance_variable_set(:@count, 8)
+            end
+          
+            it 'displays "It\'s a tie!"' do
+              allow(game).to receive(:gets).and_return("3\n", "7\n", "4\n", "6\n", "5\n", "8\n", "1\n", "9\n")
+              expect { game.make_move(player_one, player_two) }.to output("It's a tie!\n").to_stdout
+            end
+        end
+
+        context 'when an out-of-bounds move is made' do
+            it 'returns false' do
+              game.instance_variable_set(:@board, ["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+              move = 10 
+              result = game.valid_move(move)
+              expect(result).to be(false)
+            end
+        end
+    end
 end
