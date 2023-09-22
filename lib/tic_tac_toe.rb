@@ -57,7 +57,7 @@ class TicTacToe
             puts "Pick a number from the grid above #{player_one.name}"
             move = gets.chomp.to_i - 1
 
-            if move < 0 || move >= 9
+            if !valid_move
                 puts "Invalid input. Please enter a number between 1 and 9."
                 next
             end
@@ -71,12 +71,14 @@ class TicTacToe
                 return
             end
 
-            switch_players(@current_player)
+            if valid_move
+                switch_players(@current_player)
+            end 
 
             puts "Pick a number from the grid above #{player_two.name}"
             move = gets.chomp.to_i - 1
 
-            if move < 0 || move >= 9
+            if !valid_move
                 puts "Invalid input. Please enter a number between 1 and 9."
                 next
             end
@@ -91,6 +93,10 @@ class TicTacToe
             end
             switch_players(@current_player)
         end
+    end
+
+    def valid_move(move)
+        move.to_i.between?(1, 9)
     end
 
     def switch_players(current_player)
@@ -121,6 +127,3 @@ class Players
         @symbol = symbol
     end
 end
-
-newGame = TicTacToe.new 
-newGame.get_player_names
