@@ -92,9 +92,57 @@ describe TicTacToe do
             end
         end
     end
+
+    describe '#update_board' do
+        let(:player1) { Players.new("Player 1", "X") }
+        let(:player2) { Players.new("Player 2", "O") }
+        let(:game) { described_class.new }
+
+        context 'when a move is taken' do
+            before do
+                move = 0
+                game.instance_variable_set(:@board, ["X", "2", "3", "4", "5", "6", "7", "8", "9"])
+                game.update_board(move, player1, player2)
+            end
+
+            it 'does not update the board when the move is already taken' do
+                updated_board = game.instance_variable_get(:@board)
+                expect(updated_board).to eq(["X", "2", "3", "4", "5", "6", "7", "8", "9"])
+            end
+        end
+        
+
+        context 'when the move is not taken' do
+            before do
+                move = 2
+                game.instance_variable_set(:@board, ["1", "O", "3", "4", "5", "6", "7", "8", "9"])
+                game.update_board(move, player1, player2)
+            end
+        
+            it 'updates the board correctly' do
+                updated_board = game.instance_variable_get(:@board)
+                expect(updated_board).to eq(["1", "O", "3", "4", "5", "6", "7", "8", "9"])
+            end
+        end
+    end
+
+    describe '#switch_players' do
+        subject { game.instance_variable_get(:@current_player) }
+
+        context 'when the current player is "X"' do
+            before { game.instance_variable_set(:@current_player, "X") }
+
+            it 'changes current player from "X" to "O"' do
+                expect(game.switch_players(@current_player)).to eq("O")
+            end
+        end
+
+        context 'when the current player is "O"' do
+            before { game.instance_variable_set(:@current_player, "O") }
+
+            it 'changes current player from "O" to "X"' do
+                expect(game.switch_players(@current_player)).to eq("X")
+            end
+        end
+    end
 end
-
-                
-
-                
-
